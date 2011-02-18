@@ -2,6 +2,9 @@
 #define PAINTER_H
 
 #include <QWidget>
+#include <QtGui/QGraphicsScene>
+#include <QtGui/QGraphicsView>
+#include <QtGui/QHBoxLayout>
 
 class Painter : public QWidget
 {
@@ -12,6 +15,10 @@ public:
 signals:
 
 public slots:
+
+private:
+    QGraphicsScene* scene;
+    QGraphicsView* view;
 
 };
 

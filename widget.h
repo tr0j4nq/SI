@@ -2,6 +2,9 @@
 #define WIDGET_H
 
 #include <QtGui/QWidget>
+#include <QtGui/QPushButton>
+#include <QtGui/QGridLayout>
+#include "painter.h"
 
 class Widget : public QWidget
 {
@@ -10,6 +13,10 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = 0);
     ~Widget();
+
+private:
+    QPushButton* newButton;
+    Painter* painter;
 };
 
 #endif // WIDGET_H
