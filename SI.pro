@@ -12,7 +12,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         widget.cpp \
-    painter.cpp
+    painter.cpp \
+    game.cpp
 
 HEADERS  += widget.h \
-    painter.h
+    painter.h \
+    game.h
