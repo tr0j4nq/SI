@@ -11,13 +11,13 @@ Widget::Widget(QWidget *parent)
     QGridLayout* mainLayout = new QGridLayout;
     QHBoxLayout* buttonLayout = new QHBoxLayout;
 
-    painter = new Painter(this);
+    game = new GameBoard(this);
 
     buttonLayout->addWidget(newButton);
     buttonLayout->addWidget(helpButton);
 
     mainLayout->addLayout(buttonLayout,0,0);
-    mainLayout->addWidget(painter,1,0);
+    mainLayout->addWidget(game,1,0);
 
     connect(newButton, SIGNAL(clicked()), this, SLOT(newGame()));
 
@@ -68,7 +68,6 @@ void Widget::cancelNewGame(){
 }
 
 void Widget::startNewGame(){
-    game = new Game();
     if(player1Combo->currentIndex()==0)
         game->player1=0;
     else
@@ -77,6 +76,7 @@ void Widget::startNewGame(){
         game->player2=0;
     else
         game->player2=1;
+    game->drawBoard();
     newButton->setDisabled(0);
     newGameWindow->close();
 }
