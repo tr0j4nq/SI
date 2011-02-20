@@ -1,19 +1,22 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-#include <QtGui/QWidget>
+#include <QMainWindow>
 #include <QtGui/QPushButton>
 #include <QtGui/QGridLayout>
 #include "gameboard.h"
 #include <QtGui/QComboBox>
 #include <QtGui/QLabel>
 
-class Widget : public QWidget
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
-    Widget(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0);
+
+signals:
+
+public slots:
 
 private:
     QPushButton* newButton;
@@ -24,6 +27,8 @@ private:
     QComboBox* player2Combo;
     QComboBox* comp1Combo;
     QComboBox* comp2Combo;
+    QComboBox* color1Combo;
+    QComboBox* color2Combo;
 public slots:
     void newGame();
     void cancelNewGame();
@@ -32,4 +37,4 @@ public slots:
     void comp2ComboEnable();
 };
 
-#endif // WIDGET_H
+#endif // MAINWINDOW_H
