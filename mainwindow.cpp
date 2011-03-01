@@ -72,11 +72,16 @@ void MainWindow::cancelNewGame(){
 }
 
 void MainWindow::startNewGame(){
-    game->player1=player1Combo->currentIndex();
-    game->player2=player2Combo->currentIndex();
+    game->turn=0;
+    game->gameClear();
+    game->player[0]=player1Combo->currentIndex();
+    game->player[1]=player2Combo->currentIndex();
     game->colorP1=color1Combo->currentIndex();
     game->colorP2=color2Combo->currentIndex();
+    game->towers[0]=4;
+    game->towers[1]=4;
     game->drawBoard();
+    game->gameOver=false;
     newButton->setDisabled(0);
     newGameWindow->close();
 }

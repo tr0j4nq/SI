@@ -18,8 +18,7 @@ class GameBoard : public QWidget
 public:
     explicit GameBoard(QWidget *parent = 0);
     void drawBoard();
-    bool player1; //0-komputer,1-czlowiek
-    bool player2; //0-komputer,1-czlowiek
+    bool player[2]; //0-komputer,1-czlowiek
     QVector<QVector<char> > board; //aktualny stan planszy, 0-brak piona, 1-p1, 2-p2, 3-wieza
     QVector<QPolygon> boardP;
     QVector<QPoint> boardC;
@@ -30,7 +29,19 @@ public:
     bool turn;
     int colorP1;
     int colorP2;
+    int towers[2];
     void drawTower(int n);
+    void gameClear();
+    void checkStone(int n);
+    void checkTower(int x,int y);
+    void checkTower(int n);
+    void countTowers();
+    int whoseTowers[37];
+    int haveTowers[2];
+    bool gameOver;
+    QVector<QVector<char> > pointP1;
+    QVector<QVector<char> > pointP2;
+
 
 signals:
 
