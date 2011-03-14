@@ -9,9 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     game = new GameBoard(this);
     newButton->setGeometry(15,15,100,30);
     helpButton->setGeometry(125,15,100,30);
-    game->setGeometry(10,50,750,650);
-
-
+    game->setGeometry(5,50,750,650);
+    this->setMaximumSize(760,700);
     connect(newButton, SIGNAL(clicked()), this, SLOT(newGame()));
 }
 
@@ -78,8 +77,7 @@ void MainWindow::startNewGame(){
     game->player[1]=player2Combo->currentIndex();
     game->colorP1=color1Combo->currentIndex();
     game->colorP2=color2Combo->currentIndex();
-    game->towers[0]=4;
-    game->towers[1]=4;
+    game->towers=8;
     game->drawBoard();
     game->gameOver=false;
     newButton->setDisabled(0);

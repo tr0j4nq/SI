@@ -7,6 +7,8 @@
 #include "gameboard.h"
 #include <QtGui/QComboBox>
 #include <QtGui/QLabel>
+#include <QtGui/QTextEdit>
+#include "ai.h"
 
 class MainWindow : public QMainWindow
 {

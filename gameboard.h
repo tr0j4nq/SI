@@ -29,7 +29,7 @@ public:
     bool turn;
     int colorP1;
     int colorP2;
-    int towers[2];
+    int towers;
     void drawTower(int n);
     void gameClear();
     void checkStone(int n);

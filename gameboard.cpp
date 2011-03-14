@@ -29,6 +29,14 @@ void GameBoard::drawBoard(){
     for(int j=-3;j<=3;j++){
         for(int i=-350+abs(j*50);i<=250-abs(j*50);i+=100){
             scene->addEllipse(i,(j*86+50),100,100);
+            if(colorP1==0)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,0,255)), 1),QBrush(QColor(0,0,255)));
+            else if(colorP1==1)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,0,0)), 1),QBrush(QColor(255,0,0)));
+            else if(colorP1==2)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
+            else
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
             int x0,y0;
             x0=i+50;
             y0=j*86+100;
@@ -48,6 +56,7 @@ void GameBoard::drawBoard(){
         whoseTowers[i]=0;
     haveTowers[0]=0;
     haveTowers[1]=0;
+
 }
 
 void GameBoard::mousePressEvent(QMouseEvent *event)
@@ -82,12 +91,72 @@ void GameBoard::mousePressEvent(QMouseEvent *event)
             QMessageBox msgbox;
             msgbox.setText("Wygral gracz 1!");
             msgbox.exec();
+            return;
         }
         if(haveTowers[1]==4&&haveTowers[0]!=haveTowers[1]){
             gameOver=true;
             QMessageBox msgbox;
             msgbox.setText("Wygral gracz 2!");
             msgbox.exec();
+            return;
+        }
+        if(!turn&&!gameOver){
+            if(colorP1==0)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,0,255)), 1),QBrush(QColor(0,0,255)));
+            else if(colorP1==1)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,0,0)), 1),QBrush(QColor(255,0,0)));
+            else if(colorP1==2)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
+            else
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
+        }
+        else if(!gameOver){
+            if(colorP2==0)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,0,255)), 1),QBrush(QColor(0,0,255)));
+            else if(colorP2==1)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,0,0)), 1),QBrush(QColor(255,0,0)));
+            else if(colorP2==2)
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
+            else
+                scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
+        }
+        if(gameOver){
+            if(haveTowers[0]>haveTowers[1]){
+                QMessageBox msgbox;
+                msgbox.setText("Wygral gracz 1!");
+                msgbox.exec();
+            }
+            else if(haveTowers[1]>haveTowers[0]){
+                QMessageBox msgbox;
+                msgbox.setText("Wygral gracz 2!");
+                msgbox.exec();
+            }
+            else{
+                int p1=0,p2=0;
+                for(int i=0;i<board.size();i++){
+                    for(int j=0;j<board[i].size();j++){
+                        if(board[i][j]==1)
+                            p1+=1;
+                        else if(board[i][j]==2)
+                            p2+=1;
+                    }
+                }
+                if(p1>p2){
+                    QMessageBox msgbox;
+                    msgbox.setText("Wygral gracz 1!");
+                    msgbox.exec();
+                }
+                else if(p2>p1){
+                    QMessageBox msgbox;
+                    msgbox.setText("Wygral gracz 2!");
+                    msgbox.exec();
+                }
+                else{
+                    QMessageBox msgbox;
+                    msgbox.setText("Remis!");
+                    msgbox.exec();
+                }
+            }
         }
     }
 }
@@ -125,19 +194,19 @@ void GameBoard::drawStone(int n){
 
 void GameBoard::drawTower(int n){
     if(!board[ta[n]][tb[n]]){
-        if(!turn&&towers[turn]){
+        if(!turn&&towers){
             scene->addEllipse(boardC[n].x()-35,boardC[n].y()-35,70,70,QPen(QBrush(QColor(210,105,30)), 1),QBrush(QColor(210,105,30)));
             board[ta[n]][tb[n]]=3;
             checkTower(n);
-            towers[turn]--;
+            towers--;
             turn=!turn;
             checkTower(n);
         }
-        else if(turn&&towers[turn]){
+        else if(turn&&towers){
             scene->addEllipse(boardC[n].x()-35,boardC[n].y()-35,70,70,QPen(QBrush(QColor(210,105,30)), 1),QBrush(QColor(210,105,30)));
             board[ta[n]][tb[n]]=3;
             checkTower(n);
-            towers[turn]--;
+            towers--;
             turn=!turn;
             checkTower(n);
         }
@@ -780,4 +849,11 @@ void GameBoard::countTowers(){
     }
     haveTowers[0]=p1;
     haveTowers[1]=p2;
+    for(int i=0;i<board.size();i++){
+        for(int j=0;j<board[i].size();j++){
+            if(!board[i][j])
+                return;
+        }
+    }
+    gameOver=true;
 }
