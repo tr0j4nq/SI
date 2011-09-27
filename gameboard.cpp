@@ -59,6 +59,995 @@ void GameBoard::drawBoard(){
 
 }
 
+int GameBoard::abCheck(char abBoard[37],bool type){
+    char tempBoard[37];
+    for(int i=0;i<37;i++){
+        if(abBoard[i]==1 || abBoard[i]==2)
+            tempBoard[i]=6;
+    }
+    for(int i=0;i<37;i++){
+        if(abBoard[i]==3){ //przeliczenie pol woko³ wiez
+            if(i==0){
+                if(abBoard[1]==1 || abBoard[1]==2)
+                    tempBoard[1]--;
+                if(abBoard[4]==1 || abBoard[4]==2)
+                    tempBoard[4]--;
+                if(abBoard[5]==1 || abBoard[5]==2)
+                    tempBoard[5]--;
+            }
+            else if(i==1||i==2){
+                if(abBoard[i-1]==1 || abBoard[i-1]==2)
+                    tempBoard[i-1]--;
+                if(abBoard[i+1]==1 || abBoard[i+1]==2)
+                    tempBoard[i+1]--;
+                if(abBoard[i+4]==1 || abBoard[i+4]==2)
+                    tempBoard[i+4]--;
+                if(abBoard[i+5]==1 || abBoard[i+5]==2)
+                    tempBoard[i+5]--;
+            }
+            else if(i==3){
+                if(abBoard[2]==1 || abBoard[2]==2)
+                    tempBoard[2]--;
+                if(abBoard[7]==1 || abBoard[7]==2)
+                    tempBoard[7]--;
+                if(abBoard[8]==1 || abBoard[8]==2)
+                    tempBoard[8]--;
+            }
+            else if(i==4){
+                if(abBoard[0]==1 || abBoard[0]==2)
+                    tempBoard[0]--;
+                if(abBoard[5]==1 || abBoard[5]==2)
+                    tempBoard[5]--;
+                if(abBoard[9]==1 || abBoard[9]==2)
+                    tempBoard[9]--;
+                if(abBoard[10]==1 || abBoard[10]==2)
+                    tempBoard[10]--;
+            }
+            else if(i>4 && i<8){
+                if(abBoard[i-5]==1 || abBoard[i-5]==2)
+                    tempBoard[i-5]--;
+                if(abBoard[i-4]==1 || abBoard[i-4]==2)
+                    tempBoard[i-4]--;
+                if(abBoard[i-1]==1 || abBoard[i-1]==2)
+                    tempBoard[i-1]--;
+                if(abBoard[i+1]==1 || abBoard[i+1]==2)
+                    tempBoard[i+1]--;
+                if(abBoard[i+5]==1 || abBoard[i+5]==2)
+                    tempBoard[i+5]--;
+                if(abBoard[i+6]==1 || abBoard[i+6]==2)
+                    tempBoard[i+6]--;
+            }
+            else if(i==8){
+                if(abBoard[3]==1 || abBoard[3]==2)
+                    tempBoard[3]--;
+                if(abBoard[7]==1 || abBoard[7]==2)
+                    tempBoard[7]--;
+                if(abBoard[13]==1 || abBoard[13]==2)
+                    tempBoard[13]--;
+                if(abBoard[14]==1 || abBoard[14]==2)
+                    tempBoard[14]--;
+            }
+            else if(i==9){
+                if(abBoard[4]==1 || abBoard[4]==2)
+                    tempBoard[4]--;
+                if(abBoard[10]==1 || abBoard[10]==2)
+                    tempBoard[10]--;
+                if(abBoard[15]==1 || abBoard[15]==2)
+                    tempBoard[15]--;
+                if(abBoard[16]==1 || abBoard[16]==2)
+                    tempBoard[16]--;
+            }
+            else if(i>9 && i<14){
+                if(abBoard[i-6]==1 || abBoard[i-6]==2)
+                    tempBoard[i-6]--;
+                if(abBoard[i-5]==1 || abBoard[i-5]==2)
+                    tempBoard[i-5]--;
+                if(abBoard[i-1]==1 || abBoard[i-1]==2)
+                    tempBoard[i-1]--;
+                if(abBoard[i+1]==1 || abBoard[i+1]==2)
+                    tempBoard[i+1]--;
+                if(abBoard[i+6]==1 || abBoard[i+6]==2)
+                    tempBoard[i+6]--;
+                if(abBoard[i+7]==1 || abBoard[i+7]==2)
+                    tempBoard[i+7]--;
+            }
+            else if(i==14){
+                if(abBoard[8]==1 || abBoard[8]==2)
+                    tempBoard[8]--;
+                if(abBoard[13]==1 || abBoard[13]==2)
+                    tempBoard[13]--;
+                if(abBoard[20]==1 || abBoard[20]==2)
+                    tempBoard[20]--;
+                if(abBoard[21]==1 || abBoard[21]==2)
+                    tempBoard[21]--;
+            }
+            else if(i==15){
+                if(abBoard[9]==1 || abBoard[9]==2)
+                    tempBoard[9]--;
+                if(abBoard[16]==1 || abBoard[16]==2)
+                    tempBoard[16]--;
+                if(abBoard[22]==1 || abBoard[22]==2)
+                    tempBoard[22]--;
+            }
+            else if(i>15 && i<21){
+                if(abBoard[i-7]==1 || abBoard[i-7]==2)
+                    tempBoard[i-7]--;
+                if(abBoard[i-6]==1 || abBoard[i-6]==2)
+                    tempBoard[i-6]--;
+                if(abBoard[i-1]==1 || abBoard[i-1]==2)
+                    tempBoard[i-1]--;
+                if(abBoard[i+1]==1 || abBoard[i+1]==2)
+                    tempBoard[i+1]--;
+                if(abBoard[i+6]==1 || abBoard[i+6]==2)
+                    tempBoard[i+6]--;
+                if(abBoard[i+7]==1 || abBoard[i+7]==2)
+                    tempBoard[i+7]--;
+            }
+            else if(i==21){
+                if(abBoard[14]==1 || abBoard[14]==2)
+                    tempBoard[14]--;
+                if(abBoard[20]==1 || abBoard[20]==2)
+                    tempBoard[20]--;
+                if(abBoard[27]==1 || abBoard[27]==2)
+                    tempBoard[27]--;
+            }
+            else if(i==22){
+                if(abBoard[15]==1 || abBoard[15]==2)
+                    tempBoard[15]--;
+                if(abBoard[16]==1 || abBoard[16]==2)
+                    tempBoard[16]--;
+                if(abBoard[23]==1 || abBoard[23]==2)
+                    tempBoard[23]--;
+                if(abBoard[28]==1 || abBoard[28]==2)
+                    tempBoard[28]--;
+            }
+            else if(i>22 && i<27){
+                if(abBoard[i-7]==1 || abBoard[i-7]==2)
+                    tempBoard[i-7]--;
+                if(abBoard[i-6]==1 || abBoard[i-6]==2)
+                    tempBoard[i-6]--;
+                if(abBoard[i-1]==1 || abBoard[i-1]==2)
+                    tempBoard[i-1]--;
+                if(abBoard[i+1]==1 || abBoard[i+1]==2)
+                    tempBoard[i+1]--;
+                if(abBoard[i+5]==1 || abBoard[i+5]==2)
+                    tempBoard[i+5]--;
+                if(abBoard[i+6]==1 || abBoard[i+6]==2)
+                    tempBoard[i+6]--;
+            }
+            else if(i==27){
+                if(abBoard[20]==1 || abBoard[20]==2)
+                    tempBoard[20]--;
+                if(abBoard[21]==1 || abBoard[21]==2)
+                    tempBoard[21]--;
+                if(abBoard[26]==1 || abBoard[26]==2)
+                    tempBoard[26]--;
+                if(abBoard[32]==1 || abBoard[32]==2)
+                    tempBoard[32]--;
+            }
+            else if(i==28){
+                if(abBoard[22]==1 || abBoard[22]==2)
+                    tempBoard[22]--;
+                if(abBoard[23]==1 || abBoard[23]==2)
+                    tempBoard[23]--;
+                if(abBoard[29]==1 || abBoard[29]==2)
+                    tempBoard[29]--;
+                if(abBoard[33]==1 || abBoard[33]==2)
+                    tempBoard[33]--;
+            }
+            else if(i>28 && i<32){
+                if(abBoard[i-6]==1 || abBoard[i-6]==2)
+                    tempBoard[i-6]--;
+                if(abBoard[i-5]==1 || abBoard[i-5]==2)
+                    tempBoard[i-5]--;
+                if(abBoard[i-1]==1 || abBoard[i-1]==2)
+                    tempBoard[i-1]--;
+                if(abBoard[i+1]==1 || abBoard[i+1]==2)
+                    tempBoard[i+1]--;
+                if(abBoard[i+4]==1 || abBoard[i+4]==2)
+                    tempBoard[i+4]--;
+                if(abBoard[i+5]==1 || abBoard[i+5]==2)
+                    tempBoard[i+5]--;
+            }
+            else if(i==32){
+                if(abBoard[26]==1 || abBoard[26]==2)
+                    tempBoard[26]--;
+                if(abBoard[27]==1 || abBoard[27]==2)
+                    tempBoard[27]--;
+                if(abBoard[31]==1 || abBoard[31]==2)
+                    tempBoard[31]--;
+                if(abBoard[36]==1 || abBoard[36]==2)
+                    tempBoard[36]--;
+            }
+            else if(i==33){
+                if(abBoard[28]==1 || abBoard[28]==2)
+                    tempBoard[28]--;
+                if(abBoard[29]==1 || abBoard[29]==2)
+                    tempBoard[29]--;
+                if(abBoard[34]==1 || abBoard[34]==2)
+                    tempBoard[34]--;
+            }
+            else if(i>33 && i<36){
+                if(abBoard[i-5]==1 || abBoard[i-5]==2)
+                    tempBoard[i-5]--;
+                if(abBoard[i-4]==1 || abBoard[i-4]==2)
+                    tempBoard[i-4]--;
+                if(abBoard[i-1]==1 || abBoard[i-1]==2)
+                    tempBoard[i-1]--;
+                if(abBoard[i+1]==1 || abBoard[i+1]==2)
+                    tempBoard[i+1]--;
+            }
+            else if(i==36){
+                if(abBoard[31]==1 || abBoard[31]==2)
+                    tempBoard[31]--;
+                if(abBoard[32]==1 || abBoard[32]==2)
+                    tempBoard[32]--;
+                if(abBoard[35]==1 || abBoard[35]==2)
+                    tempBoard[35]--;
+            }
+        }
+    }
+    for(int i=0;i<37;i++){
+        int p1=0,p2=0;
+        if(abBoard[i]==3){ //przeliczenie zajetych wiez
+           if(i==0){
+                if(abBoard[1]==1)
+                    p1+=tempBoard[1];
+                if(abBoard[4]==1)
+                    p1+=tempBoard[4];
+                if(abBoard[5]==1)
+                    p1+=tempBoard[5];
+            }
+            else if(i==1||i==2){
+                if(abBoard[i-1]==1)
+                    p1+=tempBoard[i-1];
+                if(abBoard[i+1]==1)
+                    p1+=tempBoard[i+1];
+                if(abBoard[i+4]==1)
+                    p1+=tempBoard[i+4];
+                if(abBoard[i+5]==1)
+                    p1+=tempBoard[i+5];
+            }
+            else if(i==3){
+                if(abBoard[2]==1)
+                    p1+=tempBoard[2];
+                if(abBoard[7]==1)
+                    p1+=tempBoard[7];
+                if(abBoard[8]==1)
+                    p1+=tempBoard[8];
+            }
+            else if(i==4){
+                if(abBoard[0]==1)
+                    p1+=tempBoard[0];
+                if(abBoard[5]==1)
+                    p1+=tempBoard[5];
+                if(abBoard[9]==1)
+                    p1+=tempBoard[9];
+                if(abBoard[10]==1)
+                    p1+=tempBoard[10];
+            }
+            else if(i>4 && i<8){
+                if(abBoard[i-5]==1)
+                    p1+=tempBoard[i-5];
+                if(abBoard[i-4]==1)
+                    p1+=tempBoard[i-4];
+                if(abBoard[i-1]==1)
+                    p1+=tempBoard[i-1];
+                if(abBoard[i+1]==1)
+                    p1+=tempBoard[i+1];
+                if(abBoard[i+5]==1)
+                    p1+=tempBoard[i+5];
+                if(abBoard[i+6]==1)
+                    p1+=tempBoard[i+6];
+            }
+            else if(i==8){
+                if(abBoard[3]==1)
+                    p1+=tempBoard[3];
+                if(abBoard[7]==1)
+                    p1+=tempBoard[7];
+                if(abBoard[13]==1)
+                    p1+=tempBoard[13];
+                if(abBoard[14]==1)
+                    p1+=tempBoard[14];
+            }
+            else if(i==9){
+                if(abBoard[4]==1)
+                    p1+=tempBoard[4];
+                if(abBoard[10]==1)
+                    p1+=tempBoard[10];
+                if(abBoard[15]==1)
+                    p1+=tempBoard[15];
+                if(abBoard[16]==1)
+                    p1+=tempBoard[16];
+            }
+            else if(i>9 && i<14){
+                if(abBoard[i-6]==1)
+                    p1+=tempBoard[i-6];
+                if(abBoard[i-5]==1)
+                    p1+=tempBoard[i-5];
+                if(abBoard[i-1]==1)
+                    p1+=tempBoard[i-1];
+                if(abBoard[i+1]==1)
+                    p1+=tempBoard[i+1];
+                if(abBoard[i+6]==1)
+                    p1+=tempBoard[i+6];
+                if(abBoard[i+7]==1)
+                    p1+=tempBoard[i+7];
+            }
+            else if(i==14){
+                if(abBoard[8]==1)
+                    p1+=tempBoard[8];
+                if(abBoard[13]==1)
+                    p1+=tempBoard[13];
+                if(abBoard[20]==1)
+                    p1+=tempBoard[20];
+                if(abBoard[21]==1)
+                    p1+=tempBoard[21];
+            }
+            else if(i==15){
+                if(abBoard[9]==1)
+                    p1+=tempBoard[9];
+                if(abBoard[16]==1)
+                    p1+=tempBoard[16];
+                if(abBoard[22]==1)
+                    p1+=tempBoard[22];
+            }
+            else if(i>15 && i<21){
+                if(abBoard[i-7]==1)
+                    p1+=tempBoard[i-7];
+                if(abBoard[i-6]==1)
+                    p1+=tempBoard[i-6];
+                if(abBoard[i-1]==1)
+                    p1+=tempBoard[i-1];
+                if(abBoard[i+1]==1)
+                    p1+=tempBoard[i+1];
+                if(abBoard[i+6]==1)
+                    p1+=tempBoard[i+6];
+                if(abBoard[i+7]==1)
+                    p1+=tempBoard[i+7];
+            }
+            else if(i==21){
+                if(abBoard[14]==1)
+                    p1+=tempBoard[14];
+                if(abBoard[20]==1)
+                    p1+=tempBoard[20];
+                if(abBoard[27]==1)
+                    p1+=tempBoard[27];
+            }
+            else if(i==22){
+                if(abBoard[15]==1)
+                    p1+=tempBoard[15];
+                if(abBoard[16]==1)
+                    p1+=tempBoard[16];
+                if(abBoard[23]==1)
+                    p1+=tempBoard[23];
+                if(abBoard[28]==1)
+                    p1+=tempBoard[28];
+            }
+            else if(i>22 && i<27){
+                if(abBoard[i-7]==1)
+                    p1+=tempBoard[i-7];
+                if(abBoard[i-6]==1)
+                    p1+=tempBoard[i-6];
+                if(abBoard[i-1]==1)
+                    p1+=tempBoard[i-1];
+                if(abBoard[i+1]==1)
+                    p1+=tempBoard[i+1];
+                if(abBoard[i+5]==1)
+                    p1+=tempBoard[i+5];
+                if(abBoard[i+6]==1)
+                    p1+=tempBoard[i+6];
+            }
+            else if(i==27){
+                if(abBoard[20]==1)
+                    p1+=tempBoard[20];
+                if(abBoard[21]==1)
+                    p1+=tempBoard[21];
+                if(abBoard[26]==1)
+                    p1+=tempBoard[26];
+                if(abBoard[32]==1)
+                    p1+=tempBoard[32];
+            }
+            else if(i==28){
+                if(abBoard[22]==1)
+                    p1+=tempBoard[22];
+                if(abBoard[23]==1)
+                    p1+=tempBoard[23];
+                if(abBoard[29]==1)
+                    p1+=tempBoard[29];
+                if(abBoard[33]==1)
+                    p1+=tempBoard[33];
+            }
+            else if(i>28 && i<32){
+                if(abBoard[i-6]==1)
+                    p1+=tempBoard[i-6];
+                if(abBoard[i-5]==1)
+                    p1+=tempBoard[i-5];
+                if(abBoard[i-1]==1)
+                    p1+=tempBoard[i-1];
+                if(abBoard[i+1]==1)
+                    p1+=tempBoard[i+1];
+                if(abBoard[i+4]==1)
+                    p1+=tempBoard[i+4];
+                if(abBoard[i+5]==1)
+                    p1+=tempBoard[i+5];
+            }
+            else if(i==32){
+                if(abBoard[26]==1)
+                    p1+=tempBoard[26];
+                if(abBoard[27]==1)
+                    p1+=tempBoard[27];
+                if(abBoard[31]==1)
+                    p1+=tempBoard[31];
+                if(abBoard[36]==1)
+                    p1+=tempBoard[36];
+            }
+            else if(i==33){
+                if(abBoard[28]==1)
+                    p1+=tempBoard[28];
+                if(abBoard[29]==1)
+                    p1+=tempBoard[29];
+                if(abBoard[34]==1)
+                    p1+=tempBoard[34];
+            }
+            else if(i>33 && i<36){
+                if(abBoard[i-5]==1)
+                    p1+=tempBoard[i-5];
+                if(abBoard[i-4]==1)
+                    p1+=tempBoard[i-4];
+                if(abBoard[i-1]==1)
+                    p1+=tempBoard[i-1];
+                if(abBoard[i+1]==1)
+                    p1+=tempBoard[i+1];
+            }
+            else if(i==36){
+                if(abBoard[31]==1)
+                    p1+=tempBoard[31];
+                if(abBoard[32]==1)
+                    p1+=tempBoard[32];
+                if(abBoard[35]==1)
+                    p1+=tempBoard[35];
+            }
+        }
+        if(abBoard[i]==3){
+           if(i==0){
+                if(abBoard[1]==2)
+                    p2+=tempBoard[1];
+                if(abBoard[4]==2)
+                    p2+=tempBoard[4];
+                if(abBoard[5]==2)
+                    p2+=tempBoard[5];
+            }
+            else if(i==1||i==2){
+                if(abBoard[i-1]==2)
+                    p2+=tempBoard[i-1];
+                if(abBoard[i+1]==2)
+                    p2+=tempBoard[i+1];
+                if(abBoard[i+4]==2)
+                    p2+=tempBoard[i+4];
+                if(abBoard[i+5]==2)
+                    p2+=tempBoard[i+5];
+            }
+            else if(i==3){
+                if(abBoard[2]==2)
+                    p2+=tempBoard[2];
+                if(abBoard[7]==2)
+                    p2+=tempBoard[7];
+                if(abBoard[8]==2)
+                    p2+=tempBoard[8];
+            }
+            else if(i==4){
+                if(abBoard[0]==2)
+                    p2+=tempBoard[0];
+                if(abBoard[5]==2)
+                    p2+=tempBoard[5];
+                if(abBoard[9]==2)
+                    p2+=tempBoard[9];
+                if(abBoard[10]==2)
+                    p2+=tempBoard[10];
+            }
+            else if(i>4 && i<8){
+                if(abBoard[i-5]==2)
+                    p2+=tempBoard[i-5];
+                if(abBoard[i-4]==2)
+                    p2+=tempBoard[i-4];
+                if(abBoard[i-1]==2)
+                    p2+=tempBoard[i-1];
+                if(abBoard[i+1]==2)
+                    p2+=tempBoard[i+1];
+                if(abBoard[i+5]==2)
+                    p2+=tempBoard[i+5];
+                if(abBoard[i+6]==2)
+                    p2+=tempBoard[i+6];
+            }
+            else if(i==8){
+                if(abBoard[3]==2)
+                    p2+=tempBoard[3];
+                if(abBoard[7]==2)
+                    p2+=tempBoard[7];
+                if(abBoard[13]==2)
+                    p2+=tempBoard[13];
+                if(abBoard[14]==2)
+                    p2+=tempBoard[14];
+            }
+            else if(i==9){
+                if(abBoard[4]==2)
+                    p2+=tempBoard[4];
+                if(abBoard[10]==2)
+                    p2+=tempBoard[10];
+                if(abBoard[15]==2)
+                    p2+=tempBoard[15];
+                if(abBoard[16]==2)
+                    p2+=tempBoard[16];
+            }
+            else if(i>9 && i<14){
+                if(abBoard[i-6]==2)
+                    p2+=tempBoard[i-6];
+                if(abBoard[i-5]==2)
+                    p2+=tempBoard[i-5];
+                if(abBoard[i-1]==2)
+                    p2+=tempBoard[i-1];
+                if(abBoard[i+1]==2)
+                    p2+=tempBoard[i+1];
+                if(abBoard[i+6]==2)
+                    p2+=tempBoard[i+6];
+                if(abBoard[i+7]==2)
+                    p2+=tempBoard[i+7];
+            }
+            else if(i==14){
+                if(abBoard[8]==2)
+                    p2+=tempBoard[8];
+                if(abBoard[13]==2)
+                    p2+=tempBoard[13];
+                if(abBoard[20]==2)
+                    p2+=tempBoard[20];
+                if(abBoard[21]==2)
+                    p2+=tempBoard[21];
+            }
+            else if(i==15){
+                if(abBoard[9]==2)
+                    p2+=tempBoard[9];
+                if(abBoard[16]==2)
+                    p2+=tempBoard[16];
+                if(abBoard[22]==2)
+                    p2+=tempBoard[22];
+            }
+            else if(i>15 && i<21){
+                if(abBoard[i-7]==2)
+                    p2+=tempBoard[i-7];
+                if(abBoard[i-6]==2)
+                    p2+=tempBoard[i-6];
+                if(abBoard[i-1]==2)
+                    p2+=tempBoard[i-1];
+                if(abBoard[i+1]==2)
+                    p2+=tempBoard[i+1];
+                if(abBoard[i+6]==2)
+                    p2+=tempBoard[i+6];
+                if(abBoard[i+7]==2)
+                    p2+=tempBoard[i+7];
+            }
+            else if(i==21){
+                if(abBoard[14]==2)
+                    p2+=tempBoard[14];
+                if(abBoard[20]==2)
+                    p2+=tempBoard[20];
+                if(abBoard[27]==2)
+                    p2+=tempBoard[27];
+            }
+            else if(i==22){
+                if(abBoard[15]==2)
+                    p2+=tempBoard[15];
+                if(abBoard[16]==2)
+                    p2+=tempBoard[16];
+                if(abBoard[23]==2)
+                    p2+=tempBoard[23];
+                if(abBoard[28]==2)
+                    p2+=tempBoard[28];
+            }
+            else if(i>22 && i<27){
+                if(abBoard[i-7]==2)
+                    p2+=tempBoard[i-7];
+                if(abBoard[i-6]==2)
+                    p2+=tempBoard[i-6];
+                if(abBoard[i-1]==2)
+                    p2+=tempBoard[i-1];
+                if(abBoard[i+1]==2)
+                    p2+=tempBoard[i+1];
+                if(abBoard[i+5]==2)
+                    p2+=tempBoard[i+5];
+                if(abBoard[i+6]==2)
+                    p2+=tempBoard[i+6];
+            }
+            else if(i==27){
+                if(abBoard[20]==2)
+                    p2+=tempBoard[20];
+                if(abBoard[21]==2)
+                    p2+=tempBoard[21];
+                if(abBoard[26]==2)
+                    p2+=tempBoard[26];
+                if(abBoard[32]==2)
+                    p2+=tempBoard[32];
+            }
+            else if(i==28){
+                if(abBoard[22]==2)
+                    p2+=tempBoard[22];
+                if(abBoard[23]==2)
+                    p2+=tempBoard[23];
+                if(abBoard[29]==2)
+                    p2+=tempBoard[29];
+                if(abBoard[33]==2)
+                    p2+=tempBoard[33];
+            }
+            else if(i>28 && i<32){
+                if(abBoard[i-6]==2)
+                    p2+=tempBoard[i-6];
+                if(abBoard[i-5]==2)
+                    p2+=tempBoard[i-5];
+                if(abBoard[i-1]==2)
+                    p2+=tempBoard[i-1];
+                if(abBoard[i+1]==2)
+                    p2+=tempBoard[i+1];
+                if(abBoard[i+4]==2)
+                    p2+=tempBoard[i+4];
+                if(abBoard[i+5]==2)
+                    p2+=tempBoard[i+5];
+            }
+            else if(i==32){
+                if(abBoard[26]==2)
+                    p2+=tempBoard[26];
+                if(abBoard[27]==2)
+                    p2+=tempBoard[27];
+                if(abBoard[31]==2)
+                    p2+=tempBoard[31];
+                if(abBoard[36]==2)
+                    p2+=tempBoard[36];
+            }
+            else if(i==33){
+                if(abBoard[28]==2)
+                    p2+=tempBoard[28];
+                if(abBoard[29]==2)
+                    p2+=tempBoard[29];
+                if(abBoard[34]==2)
+                    p2+=tempBoard[34];
+            }
+            else if(i>33 && i<36){
+                if(abBoard[i-5]==2)
+                    p2+=tempBoard[i-5];
+                if(abBoard[i-4]==2)
+                    p2+=tempBoard[i-4];
+                if(abBoard[i-1]==2)
+                    p2+=tempBoard[i-1];
+                if(abBoard[i+1]==2)
+                    p2+=tempBoard[i+1];
+            }
+            else if(i==36){
+                if(abBoard[31]==2)
+                    p2+=tempBoard[31];
+                if(abBoard[32]==2)
+                    p2+=tempBoard[32];
+                if(abBoard[35]==2)
+                    p2+=tempBoard[35];
+            }
+        }
+        if (p1>p2 && p1>=5)
+            tempBoard[i]=7;
+        else if(p2>p1 && p2>=5)
+            tempBoard[i]=8;
+    }
+    if(!type){
+        int p1T=0,p2T=0;
+        for(int i=0;i<37;i++){
+            if(tempBoard[i]==7)
+                p1T++;
+            else if(tempBoard[i]==8)
+                p2T++;
+        }
+        if((p1T!=p2T)&&(p1T>=4||p2T>=4))
+            type=!type;
+        else
+            return 1000;
+    }
+    if(!turn&&type){
+        int result=0;
+        for(int i=0;i<37;i++){
+            if(abBoard[i]==1)
+                result+=1;
+            else if(abBoard[i]==2)
+                result-=1;
+            if(abBoard[i]==3 && tempBoard[i]==7)
+                result+=19;
+            if(abBoard[i]==3 && tempBoard[i]==8)
+                result-=19;
+        }
+        return result;
+    }
+    else{
+        int result=0;
+        for(int i=0;i<37;i++){
+            if(abBoard[i]==1)
+                result-=1;
+            else if(abBoard[i]==2)
+                result+=1;
+            if(abBoard[i]==3 && tempBoard[i]==7)
+                result-=19;
+            if(abBoard[i]==3 && tempBoard[i]==8)
+                result+=19;
+        }
+        return result;
+    }
+}
+
+int GameBoard::alphabeta(char abBoard[37],int depth,int alpha,int beta, bool type){
+    if(depth==0){
+        return abCheck(abBoard,true);
+    }//zwraca wynik planszy
+    bool over=1;  //czy mozna zrobic ruch, 1-nie, 0-tak
+    int  abTower=8;
+    for(int i=0;i<37;i++){
+        if(!abBoard[i])
+            over=0;
+        if(abBoard[i]==3)
+            abTower--;
+    }
+    if (over)
+        return abCheck(abBoard,true);//zwraca wynik planszy
+    int tempCheck=abCheck(abBoard,false);
+    if(tempCheck!=1000){
+        return tempCheck;
+    }
+    qApp->processEvents();
+    if(type){   //jezeli MAX
+        for(int i=0;i<37;i++){
+            if(abBoard[i]==0){
+                char tempabBoard[37];
+                for(int j=0;j<37;j++)
+                    tempabBoard[j]=abBoard[j];
+                int val;
+                tempabBoard[i]=turn+1;
+                val=alphabeta(tempabBoard,depth-1,alpha,beta,!type);
+                if(val>=alpha){
+                    alpha=val;
+                    if(depth==compDepth[turn]){
+                        abNextTurn=i;
+                        abTowerTurn=0;
+                    }
+                }
+                if(alpha>beta)
+                    return beta;
+                if(abTower){
+                    for(int j=0;j<37;j++)
+                        tempabBoard[j]=abBoard[j];
+                    tempabBoard[i]=3;
+                    val=alphabeta(tempabBoard,depth-1,alpha,beta,!type);
+                    if(val>alpha){
+                        alpha=val;
+                        if(depth==compDepth[turn]){
+                            abNextTurn=i;
+                            abTowerTurn=1;
+                        }
+                    }
+                    if(alpha>=beta)
+                        return beta;
+                }
+            }
+        }
+        return alpha;
+    }
+    else{
+        for(int i=0;i<37;i++){
+            if(abBoard[i]==0){
+                char tempabBoard[37];
+                for(int j=0;j<37;j++)
+                    tempabBoard[j]=abBoard[j];
+                int val;
+                tempabBoard[i]=(!turn)+1;
+                val=alphabeta(tempabBoard,depth-1,alpha,beta,!type);
+                beta=min(beta,val);
+                if(alpha>=beta)
+                    return alpha;
+                if(abTower){
+                    for(int j=0;j<37;j++)
+                        tempabBoard[j]=abBoard[j];
+                    tempabBoard[i]=3;
+                    val=alphabeta(tempabBoard,depth-1,alpha,beta,!type);
+                    beta=min(beta,val);
+                    if(alpha>=beta)
+                        return alpha;
+                }
+            }
+        }
+        return beta;
+    }
+}
+
+void GameBoard::abTurn(){
+    int k=0;
+    char tempBoard[37];
+    for(int i=0;i<board.size();i++){
+        for(int j=0;j<board[i].size();j++){
+            tempBoard[k]=board[i][j];
+            k++;
+        }
+    }
+    alphabeta(tempBoard,compDepth[turn],-1000,1000,1);
+    if(!abTowerTurn)
+        drawStone(abNextTurn);
+    else
+        drawTower(abNextTurn);
+    countTowers();
+    if(haveTowers[0]==4&&haveTowers[0]!=haveTowers[1]){
+        gameOver=true;
+        QMessageBox msgbox;
+        msgbox.setText("Wygral gracz 1!");
+        msgbox.exec();
+        return;
+    }
+    if(haveTowers[1]==4&&haveTowers[0]!=haveTowers[1]){
+        gameOver=true;
+        QMessageBox msgbox;
+        msgbox.setText("Wygral gracz 2!");
+        msgbox.exec();
+        return;
+    }
+    if(!turn&&!gameOver){
+        if(colorP1==0)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,0,255)), 1),QBrush(QColor(0,0,255)));
+        else if(colorP1==1)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,0,0)), 1),QBrush(QColor(255,0,0)));
+        else if(colorP1==2)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
+        else
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
+    }
+    else if(!gameOver){
+        if(colorP2==0)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,0,255)), 1),QBrush(QColor(0,0,255)));
+        else if(colorP2==1)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,0,0)), 1),QBrush(QColor(255,0,0)));
+        else if(colorP2==2)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
+        else
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
+    }
+    if(gameOver){
+        if(haveTowers[0]>haveTowers[1]){
+            QMessageBox msgbox;
+            msgbox.setText("Wygral gracz 1!");
+            msgbox.exec();
+        }
+        else if(haveTowers[1]>haveTowers[0]){
+            QMessageBox msgbox;
+            msgbox.setText("Wygral gracz 2!");
+            msgbox.exec();
+        }
+        else{
+            int p1=0,p2=0;
+            for(int i=0;i<board.size();i++){
+                for(int j=0;j<board[i].size();j++){
+                    if(board[i][j]==1)
+                        p1+=1;
+                    else if(board[i][j]==2)
+                        p2+=1;
+                }
+            }
+            if(p1>p2){
+                QMessageBox msgbox;
+                msgbox.setText("Wygral gracz 1!");
+                msgbox.exec();
+            }
+            else if(p2>p1){
+                QMessageBox msgbox;
+                msgbox.setText("Wygral gracz 2!");
+                msgbox.exec();
+            }
+            else{
+                QMessageBox msgbox;
+                msgbox.setText("Remis!");
+                msgbox.exec();
+            }
+        }
+    }
+    if (!gameOver&&!player[turn]){
+        if(compAI[turn]==0)
+            randTurn();
+        else if(compAI[turn]==1)
+            abTurn();
+        else
+            ;
+    }
+
+
+}
+
+void GameBoard::randTurn(){
+    if(rand()%100>=20)
+        drawStone(rand()%37);
+    else
+        drawTower(rand()%37);
+    countTowers();
+    if(haveTowers[0]==4&&haveTowers[0]!=haveTowers[1]){
+        gameOver=true;
+        QMessageBox msgbox;
+        msgbox.setText("Wygral gracz 1!");
+        msgbox.exec();
+        return;
+    }
+    if(haveTowers[1]==4&&haveTowers[0]!=haveTowers[1]){
+        gameOver=true;
+        QMessageBox msgbox;
+        msgbox.setText("Wygral gracz 2!");
+        msgbox.exec();
+        return;
+    }
+    if(!turn&&!gameOver){
+        if(colorP1==0)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,0,255)), 1),QBrush(QColor(0,0,255)));
+        else if(colorP1==1)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,0,0)), 1),QBrush(QColor(255,0,0)));
+        else if(colorP1==2)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
+        else
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
+    }
+    else if(!gameOver){
+        if(colorP2==0)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,0,255)), 1),QBrush(QColor(0,0,255)));
+        else if(colorP2==1)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,0,0)), 1),QBrush(QColor(255,0,0)));
+        else if(colorP2==2)
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
+        else
+            scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
+    }
+    if(gameOver){
+        if(haveTowers[0]>haveTowers[1]){
+            QMessageBox msgbox;
+            msgbox.setText("Wygral gracz 1!");
+            msgbox.exec();
+        }
+        else if(haveTowers[1]>haveTowers[0]){
+            QMessageBox msgbox;
+            msgbox.setText("Wygral gracz 2!");
+            msgbox.exec();
+        }
+        else{
+            int p1=0,p2=0;
+            for(int i=0;i<board.size();i++){
+                for(int j=0;j<board[i].size();j++){
+                    if(board[i][j]==1)
+                        p1+=1;
+                    else if(board[i][j]==2)
+                        p2+=1;
+                }
+            }
+            if(p1>p2){
+                QMessageBox msgbox;
+                msgbox.setText("Wygral gracz 1!");
+                msgbox.exec();
+            }
+            else if(p2>p1){
+                QMessageBox msgbox;
+                msgbox.setText("Wygral gracz 2!");
+                msgbox.exec();
+            }
+            else{
+                QMessageBox msgbox;
+                msgbox.setText("Remis!");
+                msgbox.exec();
+            }
+        }
+    }
+    if (!gameOver&&!player[turn]){
+        if(compAI[turn]==0)
+            randTurn();
+        else if(compAI[turn]==1)
+            abTurn();
+        else
+            ;
+    }
+
+}
+
 void GameBoard::mousePressEvent(QMouseEvent *event)
 {
     if(!gameOver&&player[turn]){
@@ -119,6 +1108,18 @@ void GameBoard::mousePressEvent(QMouseEvent *event)
                 scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(255,255,0)), 1),QBrush(QColor(255,255,0)));
             else
                 scene->addEllipse(-350,-200,50,50,QPen(QBrush(QColor(0,255,0)), 1),QBrush(QColor(0,255,0)));
+        }
+        if(!gameOver&&!player[turn]){
+            if(compAI[turn]==0){
+                randTurn();
+                return;
+            }
+            else if(compAI[turn]==1){
+                abTurn();
+                return;
+            }
+            else
+                ;
         }
         if(gameOver){
             if(haveTowers[0]>haveTowers[1]){

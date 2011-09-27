@@ -31,6 +31,8 @@ private:
     QComboBox* comp2Combo;
     QComboBox* color1Combo;
     QComboBox* color2Combo;
+    QComboBox* comp1Depth;
+    QComboBox* comp2Depth;
 public slots:
     void newGame();
     void cancelNewGame();
